@@ -1,1 +1,2 @@
-file 0 string -C !:mime HOLBERTON
+file 0 string HOLBERTON Holberton data
+!:mime Holberton
