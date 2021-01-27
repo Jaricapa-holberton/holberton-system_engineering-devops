@@ -1,0 +1,3 @@
+file string HOLBERTON Holberton data
+file -C -m jpeg2000Magic
+file -i -m jpeg2000Magic *
