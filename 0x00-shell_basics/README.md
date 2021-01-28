@@ -1,6 +1,6 @@
 # holberton-system_engineering-devops
 
-This folder have the response of the things related with Bash
+This folder have the response of the things related with the manipulation of Bash
 
 #### Content:
 0-current_working_directory
