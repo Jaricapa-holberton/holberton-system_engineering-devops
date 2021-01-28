@@ -1,2 +1,2 @@
 #!/bin/bash
-chown --from= 1000 betty
+chown betty hello
