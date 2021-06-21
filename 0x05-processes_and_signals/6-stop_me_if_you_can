@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Display To infinity and beyond indefinitely.
+#stops 4-to_infinity_and_beyond process.
 
 pkill -f "$(4-to_infinity_and_beyond)"
 #https://esgeeks.com/matar-procesos-linux-kill-pkill-killall/
