@@ -2,3 +2,4 @@
 #Kill the process 7-highlander.
 
 pkill -f -SIGKILL 7-highlander
+#https://www.linuxhispano.net/2011/08/30/diferencia-entre-las-senales-sigint-sigkill-sigterm/
