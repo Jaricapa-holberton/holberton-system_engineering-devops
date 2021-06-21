@@ -1,4 +1,3 @@
-  
 #!/usr/bin/env bash
 #Display:
 #    To infinity and beyond indefinitely
@@ -11,3 +10,4 @@ do
     sleep 2
     trap 'echo "I am invincible!!!"' SIGTERM
 done
+#https://www.linuxjournal.com/content/bash-trap-command
