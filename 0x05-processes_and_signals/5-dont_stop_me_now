@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Display To infinity and beyond indefinitely.
 
-kill -15 $(ps -ef | grep 4-to_infinity_and_beyond | awk '{print $2}')
-#kill "$(pgrep -f 4-to_infinity_and_beyond)"
+kill "$(pgrep -f 4-to_infinity_and_beyond)"
+#https://stackoverflow.com/questions/13910087/shell-script-to-capture-process-id-and-kill-it-if-exist
