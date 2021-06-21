@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#Display the PID, along with the process name, of processes whose name
-#contain the word bash.
+#Display To infinity and beyond indefinitely.
 
 while (true)
 do
