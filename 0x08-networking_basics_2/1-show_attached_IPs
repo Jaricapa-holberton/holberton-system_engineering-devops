@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Display all active IPv4 IPs on the machine it’s executed on.
 
-ifconfig | grep "inet addr" | cut -d: -f2 | cut -d" " -f1
+#ifconfig | grep "inet addr" | cut -d: -f2 | cut -d" " -f1
+/sbin/ip -4 -o addr show scope global | awk '{gsub(/\/.*/,"",$4); print $4}'
