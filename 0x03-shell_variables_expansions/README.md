@@ -1,4 +1,4 @@
-# holberton-system_engineering-devops
+# Holberton-system_engineering-devops
 
 This folder have the response of the things related with variables expansions for Bash
 
