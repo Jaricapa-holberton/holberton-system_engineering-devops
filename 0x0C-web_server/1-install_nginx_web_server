@@ -5,6 +5,8 @@
 # NOTE: i had to create the index.html file manually for the checker
 # the executable not works because html folder not allow create the file
 
+sudo usermod -aG sudo $(whoami)
+
 sudo apt-get update
 sudo apt-get install -y nginx
 
@@ -12,6 +14,7 @@ sudo apt-get install -y nginx
 sudo ufw allow 'Nginx HTTP'
 
 # Create default page
+sudo rm /var/www/html/*
 sudo echo "Holberton School" > /var/www/html/index.html
 
 sudo service nginx restart
