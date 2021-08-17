@@ -5,10 +5,10 @@
 apt-get update
 apt-get install -y nginx
 
-# Create default page
-echo "Holberton School" > /var/www/html/index.html
-
 # Configurate server
 ufw allow 'Nginx HTTP'
+
+# Create default page
+echo "Holberton School" > /var/www/html/index.html
 
 service nginx restart
