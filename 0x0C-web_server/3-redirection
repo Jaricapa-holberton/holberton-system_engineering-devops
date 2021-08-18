@@ -16,7 +16,7 @@ sudo rm /var/www/html/*
 sudo echo "Holberton School" | sudo tee /var/www/html/index.html
 
 # Add redirection
-new_site="https://github.com/Jaricapa-holberton/"
-sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" /etc/nginx/sites-available/default
+sudo sed -i "/server_name _;/a \\\n\\trewrite ^/redirect_me https://example.com/ permanent;"\
+     /etc/nginx/sites-available/default
 
 sudo service nginx restart
