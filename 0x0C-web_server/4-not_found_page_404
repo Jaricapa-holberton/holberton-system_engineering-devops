@@ -21,9 +21,9 @@ sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permane
 
 # Add 404 redirection
 # Add 404 redirection
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/my_404.html
-new_404="my_404.html"
-l_new_404="/my_404.html {root /usr/share/nginx/html;\n internal;}"
-sed -i "/listen 80 default_server/a error_page 404 /$new_404; location = $l_new_404" $f_config
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/error404.html
+error404="error404.html"
+l_error404="/error404.html {root /usr/share/nginx/html;\n internal;}"
+sed -i "/listen 80 default_server/a error_page 404 /$error404; location = $l_error404" $f_config
 
 sudo service nginx restart
