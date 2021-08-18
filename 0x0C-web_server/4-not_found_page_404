@@ -24,6 +24,6 @@ sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permane
 sudo echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error404.html
 error404="error404.html"
 l_error404="/error404.html {root /usr/share/nginx/html;\n internal;}"
-sed -i "/listen 80 default_server/a error_page 404 /$error404; location = $l_error404" $f_config
+sudo sed -i "/listen 80 default_server/a error_page 404 /$error404; location = $l_error404"
 
 sudo service nginx restart
