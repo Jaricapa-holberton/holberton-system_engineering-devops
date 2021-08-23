@@ -1,0 +1,25 @@
+# Script that install NGINX, be listening on port 80 and must return
+# a page that contains the string "Holberton School"
+# if the user try to acces /redirect_me should be redirect to random page.
+# if the user try to acces to not found page should be show "Ceci n'est pas une page"
+# Customs headers. The name of the custom HTTP header must be X-Served-By.
+# The value of the custom HTTP header must be the hostname of the server Nginx is running on.
+
+# Ignore SC2154 for shellcheck
+shellcheck disable=SC2154
+# Start the installation process
+sudo apt-get update
+sudo apt-get install -y nginx
+# Configurate server
+sudo ufw allow 'Nginx HTTP'
+# Create default page
+sudo rm /var/www/html/*
+sudo echo "Holberton School" | sudo tee /var/www/html/index.html
+# configurate redirection cases
+sudo sed -i "/server_name _;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=OrK6QxS_ZRk permanent;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /var/www/html/404_error.html
+# Configure Nginx so that its HTTP response contains a custom header 'X-Served-By'
+sudo sed -i "/server_name _;/a error_page 404 /404_error.html;" /etc/nginx/sites-available/default
+sudo sed -i "/server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+# Installation ends
+sudo service nginx restart
