@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Script that install NGINX, be listening on port 80 and must return
 # a page that contains the string "Holberton School"
 # if the user try to acces /redirect_me should be redirect to random page.
