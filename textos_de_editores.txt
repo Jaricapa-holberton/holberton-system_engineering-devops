@@ -1,5 +1,11 @@
 # Para emacs
 
+# instalar emacs:
+
+sudo apt-get install emacs
+
+# configurar emacs en un archivo .emacs en la caperta ~/
+
 ;;disable backup
 (setq backup-inhibited t)
 ;;disable auto save
@@ -47,3 +53,13 @@
 
 # para vim
 
+# primero hay que actualizar vim:
+sudo apt install vim
+# lyego hay que bajar los datos que hizo juan usando este link:
+sudo wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim | bash
+# una vez haya descargado, entrar a vim, y en la interfaz de comandos (o sea usando : y el comando)
+escribir el siguiente comando:
+
+:PlugInstall
+
+eso termina de instalar lo que le hace falta para funcionar
