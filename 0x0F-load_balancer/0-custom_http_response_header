@@ -7,21 +7,28 @@
 # Customs headers. The name of the custom HTTP header must be X-Served-By.
 # The value of the custom HTTP header must be the hostname of the server Nginx is running on.
 
-# Ignore SC2154 for shellcheck
-shellcheck disable=SC2154
-# Start the installation process
-sudo apt-get update
-sudo apt-get install -y nginx
-# Configurate server
-sudo ufw allow 'Nginx HTTP'
+apt-get update
+apt-get install -y nginx
+
 # Create default page
-sudo rm /var/www/html/*
-sudo echo "Holberton School" | sudo tee /var/www/html/index.html
-# configurate redirection cases
-sudo sed -i "/server_name _;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=OrK6QxS_ZRk permanent;" /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /var/www/html/404_error.html
-# Configure Nginx so that its HTTP response contains a custom header 'X-Served-By'
-sudo sed -i "/server_name _;/a error_page 404 /404_error.html;" /etc/nginx/sites-available/default
-sudo sed -i "/server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
-# Installation ends
-sudo service nginx restart
+echo "Holberton School" > /var/www/html/index.html
+
+# Configurate server
+ufw allow 'Nginx HTTP'
+
+f_config="/etc/nginx/sites-available/default"
+
+# Add header
+sed -i "/listen 80 default_server/a add_header X-Served-By \"$HOSTNAME\";" $f_config
+
+# Add redirection
+new_site="https://github.com/EstephaniaCalvoC/"
+sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" $f_config
+
+# Add 404 redirection
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/my_404.html
+new_404="my_404.html"
+l_new_404="/my_404.html {root /usr/share/nginx/html;\n internal;}"
+sed -i "/listen 80 default_server/a error_page 404 /$new_404; location = $l_new_404" $f_config
+
+service nginx restart
