@@ -27,17 +27,3 @@ backend back
         server 2177-web-02 54.227.102.243:80 check" >> /etc/haproxy/haproxy.cfg
 
 service haproxy restart
-
-# if dont works...
-
-printf %s "frontend http_front
-    bind *:80
-    default_backend web-backend
-backend web-backend
-    balance roundrobin
-    server 2418-web-01  34.74.10.45
-    server 2418-web-02  54.235.19.10
-" >> /etc/haproxy/haproxy.cfg
-
-# end the installation process
-sudo service haproxy restart
