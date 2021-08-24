@@ -6,30 +6,24 @@
 # if the user try to acces to not found page should be show "Ceci n'est pas une page"
 # Customs headers. The name of the custom HTTP header must be X-Served-By.
 # The value of the custom HTTP header must be the hostname of the server Nginx is running on.
-
 sudo apt-get update
 sudo apt-get install -y nginx
 
+# Configurate server
+sudo ufw allow 'Nginx HTTP'
+f_config="/etc/nginx/sites-available/default"
+# Add header
+sudo sed -i "/listen 80 default_server/a add_header X-Served-By \"$HOSTNAME\";" $f_config
 # Create default page
 sudo rm /var/www/html/*
 sudo echo "Holberton School" | sudo tee /var/www/html/index.html
-
-# Configurate server
-ufw allow 'Nginx HTTP'
-
-f_config="/etc/nginx/sites-available/default"
-
-# Add header
-sudo sed -i "/listen 80 default_server/a add_header X-Served-By \"$HOSTNAME\";" $f_config
-
 # Add redirection
-new_site="https://github.com/Jaricapa-holberton/"
+new_site="https://www.youtube.com/watch?v=QH2-TGUlwu4"
 sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" $f_config
-
 # Add 404 redirection
 sudo echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error404.html
-error404="error_404.html"
-l_error404="/error_404.html {root /usr/share/nginx/html;\n internal;}"
+error404="error404.html"
+l_error404="/error404.html {root /usr/share/nginx/html;\n internal;}"
 sudo sed -i "/listen 80 default_server/a error_page 404 /$error404; location = $l_error404" $f_config
 
 sudo service nginx restart
