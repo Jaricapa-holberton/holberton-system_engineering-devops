@@ -9,21 +9,21 @@
 # First, install the load balanecer
 
 sudo apt-get -y update
-sudo apt-get -y install haproxy=1.6.\*
+sudo apt-get -y install haproxy
 
 # allow the use of the lb_01
-echo "ENABLED=1" >> /etc/default/haproxy
+#echo "ENABLED=1" >> /etc/default/haproxy
 
-cp /etc/haproxy/haproxy.cfg /etc/haproxy/original.cfg
+#cp /etc/haproxy/haproxy.cfg /etc/haproxy/original.cfg
 
 # set the lb_01 with the required parameters
-echo "
+sudo echo "
 frontend front
         bind *:80
 	default_backend back
 backend back
         balance roundrobin
-        server 2177-web-01 35.243.155.96:80 check
-        server 2177-web-02 54.227.102.243:80 check" >> /etc/haproxy/haproxy.cfg
+        server 2241-web-01 35.243.138.187:80 check
+        server 2241-web-02 3.84.128.192:80 check" | sudo tee /etc/haproxy/haproxy.cfg
 
 service haproxy restart
