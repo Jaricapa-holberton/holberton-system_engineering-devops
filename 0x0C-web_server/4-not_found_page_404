@@ -14,12 +14,9 @@ f_config="/etc/nginx/sites-available/default"
 # Create default page
 sudo rm /var/www/html/*
 sudo echo "Holberton School" | sudo tee /var/www/html/index.html
-
 # Add redirection
 new_site="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" /etc/nginx/sites-available/default
-
-# Add 404 redirection
+sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" $f_config
 # Add 404 redirection
 sudo echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error404.html
 error404="error404.html"
