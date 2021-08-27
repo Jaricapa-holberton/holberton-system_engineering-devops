@@ -69,7 +69,7 @@ frontend www-https
         default_backend www-backend
 
 backend www-backend
-        redirect scheme https if !{ ssl_fc }
+        http-request redirect scheme https code 301 unless { ssl_fc }
         balance roundrobin
         server 2418-web-01  34.74.10.45:80 check
         server 2418-web-02  54.235.19.10:80 check
