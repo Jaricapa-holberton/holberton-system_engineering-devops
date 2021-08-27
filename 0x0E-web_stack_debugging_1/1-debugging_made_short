@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Script that fix conection on port 80 for the NGINX web server
+sed -i 's/ ipv6only=on;/;/g' /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default | sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart

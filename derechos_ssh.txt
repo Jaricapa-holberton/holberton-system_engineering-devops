@@ -1,0 +1,2 @@
+# para poner los derechos necesarios en la clave privada para abrir el ssh con github:
+chmod 600 ~/.ssh/clavep

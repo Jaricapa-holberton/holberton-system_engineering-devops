@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on your lb-01 server
+# Configure HAproxy with version equal or greater than 1.5 so that it send traffic to web-01 and web-02
+# Distribute requests using a roundrobin algorithm
+# Make sure that HAproxy can be managed via an init script
+# Make sure that your servers are configured with the right hostnames: [STUDENT_ID]-web-01 and [STUDENT_ID]-web-02
+# The value of the custom HTTP header must be the hostname of the server Nginx is running on.
+
+# First, install the load balanecer
+
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+
+# allow the use of the lb_01
+#echo "ENABLED=1" >> /etc/default/haproxy
+
+#cp /etc/haproxy/haproxy.cfg /etc/haproxy/original.cfg
+
+# set the lb_01 with the required parameters
+sudo echo "
+frontend front
+        bind *:80
+	default_backend back
+backend back
+        balance roundrobin
+        server 2241-web-01 35.243.138.187:80 check
+        server 2241-web-02 3.84.128.192:80 check" | sudo tee /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
