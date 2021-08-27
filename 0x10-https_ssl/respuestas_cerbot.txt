@@ -1,0 +1,38 @@
+############ ERROR: cuando pasas un nombre de dominio con un registro A record equivocado ####################
+
+Requesting a certificate for jaimearicapa.tech
+
+Certbot failed to authenticate some domains (authenticator: standalone). The Certificate Authority reported these problems:
+  Domain: jaimearicapa.tech
+  Type:   unauthorized
+  Detail: Invalid response from http://jaimearicapa.tech/.well-known/acme-challenge/X87ItPgC7YAAv1a8MUREhZBKhEBCBD-bHQ_WYQHEztg [35.243.138.187]: 404
+
+Hint: The Certificate Authority failed to download the challenge files from the temporary standalone webserver started by Certbot on port 80. Ensure that the listed domains point to this machine and that it can accept inbound connections from the internet.
+
+############ ERROR: cuando pasas un nombre de dominio con un registro A record en proceso de validacióno ####################
+
+Certbot failed to authenticate some domains (authenticator: standalone). The Certificate Authority reported these problems:
+  Domain: www.jaimearicapa.tech
+  Type:   dns
+  Detail: DNS problem: NXDOMAIN looking up A for www.jaimearicapa.tech - check that a DNS record exists for this domain
+
+Hint: The Certificate Authority failed to download the challenge files from the temporary standalone webserver started by Certbot on port 80. Ensure that the listed domains point to this machine and that it can accept inbound connections from the internet.
+
+Some challenges have failed.
+Ask for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details.
+
+############ EXITO: la entrega del certificado ####################
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/www.jaimearicapa.tech/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/www.jaimearicapa.tech/privkey.pem
+This certificate expires on 2021-11-25.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
