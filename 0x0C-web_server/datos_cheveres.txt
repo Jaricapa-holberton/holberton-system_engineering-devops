@@ -1,8 +1,0 @@
-Here your Intranet API Key: 2bd01cfc8fa84a5b5085d12d28154799
-
-GitHub Student Developer Pack page: https://education.github.com/pack/offers
-
-onw domain: jaimearicapa.tech
-
-archivo de configuracion nginx en el server para hacer redirecciones:
-sudo emacs /etc/nginx/sites-enabled/default
