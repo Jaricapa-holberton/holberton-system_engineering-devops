@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Configure ufw so that it blocks all incoming traffic
+# except the following TCP ports: 22 (SSH), 443 (HTTPS SSL) and 80 (HTTP)
+
+# resources from: https://www.tecmint.com/setup-ufw-firewall-on-ubuntu-and-debian/
+
+# install on the server
+sudo apt-get -y update
+sudo apt-get -y install ufw
+
+# Because When you install UFW, port 22 is blocked by default, so you should unblock it immediately before logging out of your server
+# For that reason, turn off (disable) ufw for to the respective changes before log out the server and lost connection
+sudo ufw disable
+
+# By default, the UFW firewall denies every incoming connections and only allow all outbound connections to server.
+# This means, no one can access your server, unless you specifically open the port, while all the running services or applications on your server can be able to access the outside network.
+# The default UFW firewall polices are placed in the /etc/default/ufw file and can be altered using the following command.
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# If you’ve enabled UFW firewall by now, it would block all incoming connections and if you are connected to your server over SSH from a remote location, you will no longer able to connect it again.
+# Let’s enable SSH connections to our server to stop that from happening using the following command.
+sudo ufw allow 22/tcp
+# Open Port 80 HTTP on UFW
+sudo ufw allow 80/tcp
+# Open Port 443 HTTPS on UFW
+sudo ufw allow 443/tcp
+
+# after the securty rules are applied, restart the firewall
+sudo ufw enable
