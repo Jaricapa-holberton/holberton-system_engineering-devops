@@ -27,7 +27,9 @@ sudo ufw allow 22/tcp
 sudo ufw allow 443/tcp
 # Open Port 80 HTTP on UFW
 sudo ufw allow 80/tcp
-sudo ufw allow 8080/tcp # Alternative http 
+sudo ufw allow 8080/tcp # Alternative http
+# Open port 3306 MySQL on UFW
+sudo ufw allow 3306/tcp
 
 # after the securty rules are applied, restart the firewall
 sudo ufw enable
