@@ -1,6 +1,6 @@
 # 0x14. MySQL
 
-## COntents:
+## Contents:
 
 4. Setup a Primary-Replica infrastructure using MySQL:
 4-mysql_configuration_primary: The MySQL my.conf configuration file used to set up my first server as a primary database server on the database tyrell_corp.
