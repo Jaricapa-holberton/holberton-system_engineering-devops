@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# execute on every server
+
+sudo apt-get update
+sudo apt install -y mysql-server
