@@ -48,7 +48,7 @@ backend www-backend
         http-request redirect scheme https code 301 unless { ssl_fc }
         balance roundrobin
         server 2241-web-01  35.243.138.187:80 check
-        server 2241-web-02  3.84.128.192:80 check
+        server 2241-web-02  34.228.83.67:80 check
 
 backend letsencrypt-backend
         server letsencrypt 127.0.0.1:54321
