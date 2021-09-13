@@ -19,7 +19,7 @@ if __name__ == "__main__":
     # get the json of task data of users, as the user id says
     tasks = requests.get(url + uri_todos, params={"userId": user_id}).json()
 
-    # check what users ended their tasks
+    # check what tasks were completed of the user
     tasks_completed = [task for task in tasks if task.get("completed") is True]
 
     # print the task completed
