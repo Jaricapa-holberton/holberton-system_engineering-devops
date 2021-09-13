@@ -16,12 +16,9 @@ if __name__ == "__main__":
     uri_todos = "todos"
 
     # get the json of user data
-    user = requests.get(url + uri_user_id).json()
+    user_name = requests.get(url + uri_user_id).json().get("username")
     # get the json of task data of users, as the user id says
     tasks = requests.get(url + uri_todos, params={"userId": user_id}).json()
-
-    # check what tasks were completed of the user
-    tasks_completed = [task for task in tasks if task.get("completed") is True]
 
     # save the tasks completed in a csv file
     # format: "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
