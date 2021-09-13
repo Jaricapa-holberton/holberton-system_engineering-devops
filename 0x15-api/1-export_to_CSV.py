@@ -20,13 +20,12 @@ if __name__ == "__main__":
     # get the json of task data of users, as the user id says
     tasks = requests.get(url + uri_todos, params={"userId": user_id}).json()
 
-    # save the tasks completed in a csv file
-    # format: "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
-    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        [writer.writerow(
-            [user_id,
-             user_name,
-             task.get("completed"),
-             task.get("title")]
-         ) for task in tasks]
+    # save the tasks completed in a json object
+    # { "USER_ID": [{"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS,
+    # "username": "USERNAME"}, {"task": "TASK_TITLE",
+    # "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"}, ... ]}
+    with open("{}.json".format(user_id), "w", newline="") as jsonfile:
+        json.dump({user_id: [{"task": task.get("title"),
+                              "completed": task.get("completed"),
+                              "username": user_name} for task in tasks]},
+                  jsonfile)
