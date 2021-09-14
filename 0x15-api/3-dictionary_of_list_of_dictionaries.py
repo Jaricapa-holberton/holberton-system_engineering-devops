@@ -6,9 +6,6 @@ from sys import argv
 
 
 if __name__ == "__main__":
-    # get the id to search
-    user_id = argv[1]
-
     url = "https://jsonplaceholder.typicode.com/"
     # add the endpoint of user to the link of the api
     uri_user = "users/"
